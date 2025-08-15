@@ -1,0 +1,56 @@
+{
+	"name": "my-ai-garden",
+	"private": true,
+	"version": "0.0.1",
+	"type": "module",
+	"scripts": {
+		"dev": "vite dev",
+		"build": "PUBLIC_DISABLE_OPFS=false vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"format": "prettier --write .",
+		"lint": "prettier --check . && eslint .",
+		"lint:fix": "prettier --write . && eslint . --fix",
+		"test:unit": "vitest",
+		"test": "npm run test:unit -- --run",
+		"checks": "npm run format && npm run lint && npm run check"
+	},
+	"dependencies": {
+		"@wllama/wllama": "github:khromov/wllama#cache-reset-fix-2",
+		"markdown-it": "^14.0.0",
+		"markdown-it-highlightjs": "^4.0.1",
+		"lucide-svelte": "^0.344.0",
+		"@types/markdown-it": "^13.0.7",
+		"svelte-persisted-store": "^0.12.0"
+	},
+	"devDependencies": {
+		"@eslint/compat": "^1.3.2",
+		"@eslint/js": "^9.33.0",
+		"@sveltejs/adapter-auto": "^5.0.0",
+		"@sveltejs/kit": "^2.27.3",
+		"@sveltejs/vite-plugin-svelte": "^6.1.1",
+		"@vitest/browser": "^3.2.3",
+		"autoprefixer": "^10.4.18",
+		"eslint": "^9.33.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-svelte": "^3.11.0",
+		"globals": "^16.3.0",
+		"playwright": "^1.53.0",
+		"postcss": "^8.4.35",
+		"prettier": "^3.6.2",
+		"prettier-plugin-svelte": "^3.4.0",
+		"svelte": "^5.38.0",
+		"svelte-check": "^4.3.1",
+		"tailwindcss": "^3.4.1",
+		"typescript": "^5.9.2",
+		"typescript-eslint": "^8.39.0",
+		"vite": "^6.0.0",
+		"vitest": "^3.2.3",
+		"vitest-browser-svelte": "^0.1.0"
+	},
+	"engines": {
+		"node": ">=24.0.0"
+	}
+}
