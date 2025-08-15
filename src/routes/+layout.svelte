@@ -2,7 +2,7 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import '../app.css';
 	import ModelSelector from '$lib/components/ModelSelector.svelte';
-	import { modelStatus } from '$lib/stores/model';
+	import { isLoading } from '$lib/stores/model';
 
 	let { children } = $props();
 
@@ -48,7 +48,7 @@
 		</div>
 		<div class="flex items-center space-x-4">
 			<ModelSelector />
-			<span class="text-sm">Model Status: {$modelStatus}</span>
+			<span class="text-sm">Model Status: {$isLoading ? 'Loading...' : 'Ready'}</span>
 		</div>
 	</div>
 </header>
