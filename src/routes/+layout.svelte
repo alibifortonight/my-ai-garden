@@ -23,13 +23,6 @@
 <!-- Layout wrapper -->
 <div class="flex min-h-screen flex-col bg-gray-100 text-gray-900">
 
-<svelte:head>
-	<link rel="icon" href={favicon} />
-	<meta name="description" content="AI Garden - Run AI models in your browser with WebAssembly" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>AI Garden</title>
-</svelte:head>
-
 <!-- Header -->
 <header class="bg-gradient-to-r from-green-500 to-blue-500 p-4 text-white shadow-md">
 	<div class="container mx-auto flex items-center justify-between">
