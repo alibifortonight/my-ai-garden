@@ -3,15 +3,40 @@
 
 @tailwind base;
 @tailwind components;
+
 @tailwind utilities;
 
 @layer base {
+  :root {
+    /* Color palette */
+    --color-primary-50: 230 242 254;
+    --color-primary-100: 202 231 254;
+    --color-primary-200: 159 209 252;
+    --color-primary-300: 108 178 249;
+    --color-primary-400: 56 148 244;
+    --color-primary-500: 17 123 239;
+    --color-primary-600: 8 96 224;
+    --color-primary-700: 8 74 179;
+    --color-primary-800: 9 60 146;
+    --color-primary-900: 10 51 120;
+    --color-primary-950: 6 31 73;
+
+    /* Typography */
+    --font-body: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+    /* Transitions */
+    --transition-duration: 150ms;
+    --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
   html {
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: var(--font-body);
+    scroll-behavior: smooth;
   }
   
   body {
-    @apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100;
+ @apply bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 antialiased;
   }
   
   code {
@@ -21,7 +46,7 @@
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
+    @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-colors duration-[var(--transition-duration)] ease-[var(--transition-timing-function)] focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
   }
   
   .btn-primary {
@@ -53,4 +78,14 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  .transition-colors-gpu {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-duration: var(--transition-duration);
+    transition-timing-function: var(--transition-timing-function);
+    will-change: color, background-color, border-color, text-decoration-color, fill, stroke;
+  }
 } 
+
+/* Add basic dark mode toggle support */
+/* You'll likely implement a more robust solution in Svelte */

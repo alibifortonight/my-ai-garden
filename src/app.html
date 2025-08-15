@@ -2,10 +2,29 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="theme-color" content="#1a202c" />
+		<meta name="description" content="AI Garden - Experiment with local AI models." />
+		<meta name="keywords" content="AI, local AI, machine learning, AI models, experiment" />
+		
+		<title>AI Garden</title>
+
+		<!-- Favicon -->
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+		<!-- Web App Manifest -->
+		<link rel="manifest" href="/manifest.json" />
+
+		<!-- CSP Headers for WebAssembly -->
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; connect-src 'self'; font-src 'self'; object-src 'none'; frame-ancestors 'none'; worker-src 'self' blob:;" />
+
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">
+		<!-- Loading Screen -->
+		<div id="loading-screen" class="loading-screen">
+			<div class="loading-spinner"></div>
+		</div>
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>
