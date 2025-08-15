@@ -1,16 +1,17 @@
 <script lang="ts">
 	import { aiStore, aiActions } from '$lib/stores/ai';
+	import { modelStore } from '$lib/stores/model';
 	import ChatMessage from './ChatMessage.svelte';
 	import { Trash2 } from 'lucide-svelte';
-	
+
 	let chatContainer: HTMLDivElement;
-	
+
 	function clearChat() {
 		aiActions.clearMessages();
 	}
-	
+
 	$effect(() => {
-		if (chatContainer && $aiStore.messages.length > 0) {
+		if (chatContainer && $aiStore.settings.autoScroll) {
 			chatContainer.scrollTop = chatContainer.scrollHeight;
 		}
 	});
@@ -19,7 +20,7 @@
 <div class="flex-1 flex flex-col min-h-0">
 	<div class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
 		<h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Chat</h2>
-		
+
 		{#if $aiStore.messages.length > 0}
 			<button
 				onclick={clearChat}
@@ -30,7 +31,7 @@
 			</button>
 		{/if}
 	</div>
-	
+
 	<div
 		bind:this={chatContainer}
 		class="flex-1 overflow-y-auto p-4 space-y-4"
@@ -38,7 +39,7 @@
 		{#if $aiStore.messages.length === 0}
 			<div class="flex items-center justify-center h-full">
 				<div class="text-center text-gray-500 dark:text-gray-400">
-					{#if $aiStore.isModelLoaded}
+					{#if $modelStore.currentModel?.isLoaded}
 						<p class="text-lg font-medium mb-2">Start a conversation</p>
 						<p class="text-sm">Type a message below to begin chatting with the AI</p>
 					{:else}
@@ -53,4 +54,4 @@
 			{/each}
 		{/if}
 	</div>
-</div> 
+</div>

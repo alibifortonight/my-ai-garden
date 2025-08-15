@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { aiStore } from '$lib/stores/ai';
+	import { modelStore } from '$lib/stores/model';
 	import ModelSelector from '$lib/components/ModelSelector.svelte';
 	import ChatContainer from '$lib/components/ChatContainer.svelte';
 	import ChatInput from '$lib/components/ChatInput.svelte';
-	import { Sparkles, Github, ExternalLink } from 'lucide-svelte';
+	import { Sparkles, Github, ExternalLink, AlertTriangle } from 'lucide-svelte';
 </script>
 
 <svelte:head>
@@ -11,7 +11,6 @@
 </svelte:head>
 
 <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
-	<!-- Header -->
 	<header class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
 		<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 			<div class="flex items-center justify-between h-16">
@@ -25,55 +24,49 @@
 				
 				<div class="flex items-center gap-4">
 					<a
-						href="https://github.com/your-username/ai-garden"
+						href="https://github.com/alibifortonight/my-ai-garden"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="btn-ghost"
+						aria-label="GitHub Repository"
 					>
 						<Github class="w-5 h-5" />
-						<span class="sr-only">GitHub</span>
 					</a>
 					<a
 						href="https://wllama.ai"
 						target="_blank"
 						rel="noopener noreferrer"
 						class="btn-ghost"
+						aria-label="Wllama Website"
 					>
 						<ExternalLink class="w-5 h-5" />
-						<span class="sr-only">Wllama</span>
 					</a>
 				</div>
 			</div>
 		</div>
 	</header>
 
-	<!-- Main Content -->
 	<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
 		<div class="grid grid-cols-1 lg:grid-cols-4 gap-8 h-[calc(100vh-12rem)]">
-			<!-- Sidebar -->
 			<div class="lg:col-span-1">
 				<ModelSelector />
 			</div>
 			
-			<!-- Chat Area -->
-			<div class="lg:col-span-3 flex flex-col">
+			<div class="lg:col-span-3 flex flex-col bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700">
 				<ChatContainer />
 				<ChatInput />
 			</div>
 		</div>
 		
-		<!-- Error Display -->
-		{#if $aiStore.error}
-			<div class="mt-8 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+		{#if $modelStore.error}
+			<div class="fixed bottom-4 right-4 max-w-sm w-full mt-8 p-4 bg-red-50 dark:bg-red-900/50 border border-red-200 dark:border-red-800 rounded-lg shadow-lg">
 				<div class="flex items-center gap-3">
 					<div class="flex-shrink-0">
-						<div class="w-5 h-5 bg-red-400 rounded-full flex items-center justify-center">
-							<span class="text-white text-xs font-bold">!</span>
-						</div>
+						<AlertTriangle class="w-5 h-5 text-red-500" />
 					</div>
 					<div>
 						<h3 class="text-sm font-medium text-red-800 dark:text-red-200">Error</h3>
-						<p class="text-sm text-red-700 dark:text-red-300 mt-1">{$aiStore.error}</p>
+						<p class="text-sm text-red-700 dark:text-red-300 mt-1">{$modelStore.error}</p>
 					</div>
 				</div>
 			</div>
