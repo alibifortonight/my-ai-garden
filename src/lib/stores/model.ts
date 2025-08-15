@@ -82,6 +82,7 @@ export const modelActions = {
 				isInitializing: false 
 			}));
 			
+			const state = get(modelStore);
 			// Auto-load last model if enabled
 			if (state.settings.autoLoadLastModel && state.currentModel) {
 				await this.loadModel(state.currentModel.model);
@@ -313,4 +314,4 @@ function get<T>(store: any): T {
 if (typeof window !== 'undefined') {
 	// Only initialize on the client side
 	modelActions.initialize().catch(console.error);
-} 
+}
