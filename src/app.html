@@ -16,7 +16,7 @@
 		<link rel="manifest" href="/manifest.json" />
 
 		<!-- CSP Headers for WebAssembly -->
-		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; media-src 'self'; connect-src 'self' https://huggingface.co; font-src 'self' data: https://fonts.gstatic.com; object-src 'none'; frame-ancestors 'none'; worker-src 'self' blob:;" />
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; media-src 'self'; connect-src 'self' https://huggingface.co https://cdn-lfs-us-1.hf.co; font-src 'self' data: https://fonts.gstatic.com; object-src 'none'; frame-ancestors 'none'; worker-src 'self' blob:;" />
 
 		%sveltekit.head%
 	</head>
